@@ -1,11 +1,24 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { CreditCard, DollarSign, FileText, AlertCircle, Download, Plus } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
+import { useState } from "react";
+import {
+  CreditCard,
+  DollarSign,
+  FileText,
+  AlertCircle,
+  Download,
+  Plus,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
@@ -13,14 +26,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function BillingDashboard() {
-  const [invoices, setInvoices] = useState([
+  const [invoices] = useState([
     {
       id: "INV-001",
       member: "John Doe",
@@ -57,7 +76,7 @@ export function BillingDashboard() {
       items: ["Hot Desk (6 days)"],
       paidDate: null,
     },
-  ])
+  ]);
 
   const memberPlans = [
     {
@@ -87,29 +106,31 @@ export function BillingDashboard() {
       totalThisMonth: 320,
       status: "Active",
     },
-  ]
+  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Paid":
-        return "default"
+        return "default";
       case "Pending":
-        return "secondary"
+        return "secondary";
       case "Overdue":
-        return "destructive"
+        return "destructive";
       case "Draft":
-        return "outline"
+        return "outline";
       default:
-        return "secondary"
+        return "secondary";
     }
-  }
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold">Billing Dashboard</h2>
-          <p className="text-sm sm:text-base text-gray-600">Manage invoices, payments, and member billing</p>
+          <p className="text-sm sm:text-base text-gray-600">
+            Manage invoices, payments, and member billing
+          </p>
         </div>
         <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
           <Button variant="outline" className="w-full sm:w-auto bg-transparent">
@@ -126,7 +147,9 @@ export function BillingDashboard() {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Create New Invoice</DialogTitle>
-                <DialogDescription>Generate an invoice for a member</DialogDescription>
+                <DialogDescription>
+                  Generate an invoice for a member
+                </DialogDescription>
               </DialogHeader>
               <div className="space-y-4">
                 <div>
@@ -223,7 +246,9 @@ export function BillingDashboard() {
             <CreditCard className="h-5 w-5" />
             Member Plans & Usage
           </CardTitle>
-          <CardDescription>Current member subscriptions and usage tracking</CardDescription>
+          <CardDescription>
+            Current member subscriptions and usage tracking
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -246,7 +271,10 @@ export function BillingDashboard() {
                     <p className="text-sm text-gray-600">{member.plan} Plan</p>
                     <div className="flex flex-wrap gap-3 text-xs text-gray-500 mt-1">
                       {Object.entries(member.usage).map(([key, value]) => (
-                        <span key={key} className="bg-gray-100 px-2 py-1 rounded">
+                        <span
+                          key={key}
+                          className="bg-gray-100 px-2 py-1 rounded"
+                        >
                           {key}: {value}
                         </span>
                       ))}
@@ -254,9 +282,14 @@ export function BillingDashboard() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:items-end gap-1">
-                  <div className="text-2xl font-bold">${member.totalThisMonth}</div>
+                  <div className="text-2xl font-bold">
+                    ${member.totalThisMonth}
+                  </div>
                   <p className="text-sm text-gray-600">This month</p>
-                  <Badge variant="default" className="self-start sm:self-end text-xs">
+                  <Badge
+                    variant="default"
+                    className="self-start sm:self-end text-xs"
+                  >
                     {member.status}
                   </Badge>
                 </div>
@@ -301,22 +334,35 @@ export function BillingDashboard() {
                 >
                   <div className="flex items-start gap-3 flex-1 min-w-0">
                     <div className="text-center flex-shrink-0 bg-gray-100 p-2 rounded">
-                      <div className="font-mono text-sm font-medium">{invoice.id}</div>
+                      <div className="font-mono text-sm font-medium">
+                        {invoice.id}
+                      </div>
                       <div className="text-xs text-gray-500">Invoice</div>
                     </div>
                     <div className="min-w-0 flex-1">
                       <h4 className="font-medium truncate">{invoice.member}</h4>
-                      <p className="text-sm text-gray-600">Due: {invoice.dueDate}</p>
-                      <div className="text-xs text-gray-500 mt-1 line-clamp-2">{invoice.items.join(", ")}</div>
+                      <p className="text-sm text-gray-600">
+                        Due: {invoice.dueDate}
+                      </p>
+                      <div className="text-xs text-gray-500 mt-1 line-clamp-2">
+                        {invoice.items.join(", ")}
+                      </div>
                     </div>
                   </div>
                   <div className="flex flex-col sm:items-end gap-2">
                     <div className="text-xl font-bold">${invoice.amount}</div>
-                    <Badge variant={getStatusColor(invoice.status)} className="self-start sm:self-end text-xs">
+                    <Badge
+                      variant={getStatusColor(invoice.status)}
+                      className="self-start sm:self-end text-xs"
+                    >
                       {invoice.status}
                     </Badge>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="outline" className="flex-1 sm:flex-none bg-transparent">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 sm:flex-none bg-transparent"
+                      >
                         View
                       </Button>
                       {invoice.status === "Pending" && (
@@ -338,5 +384,5 @@ export function BillingDashboard() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

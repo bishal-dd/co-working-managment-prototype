@@ -1,11 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Shield, Key, CheckCircle, XCircle, Plus } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
+import { useState } from "react";
+import { Shield, Key, CheckCircle, XCircle, Plus } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
@@ -13,14 +19,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Switch } from "@/components/ui/switch"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function AccessControl() {
-  const [accessLogs, setAccessLogs] = useState([
+  const [accessLogs] = useState([
     {
       id: 1,
       user: "John Doe",
@@ -57,7 +69,7 @@ export function AccessControl() {
       status: "Granted",
       timestamp: "2024-01-15 11:45:33",
     },
-  ])
+  ]);
 
   const accessCards = [
     {
@@ -66,7 +78,12 @@ export function AccessControl() {
       user: "John Doe",
       role: "Admin",
       status: "Active",
-      permissions: ["Main Entrance", "All Floors", "Server Room", "Conference Rooms"],
+      permissions: [
+        "Main Entrance",
+        "All Floors",
+        "Server Room",
+        "Conference Rooms",
+      ],
       issued: "2024-01-01",
       expires: "2024-12-31",
     },
@@ -76,7 +93,12 @@ export function AccessControl() {
       user: "Sarah Wilson",
       role: "Member",
       status: "Active",
-      permissions: ["Main Entrance", "1st Floor", "2nd Floor", "Conference Rooms"],
+      permissions: [
+        "Main Entrance",
+        "1st Floor",
+        "2nd Floor",
+        "Conference Rooms",
+      ],
       issued: "2024-01-05",
       expires: "2024-12-31",
     },
@@ -90,22 +112,49 @@ export function AccessControl() {
       issued: "2024-01-10",
       expires: "2024-12-31",
     },
-  ]
+  ];
 
   const accessPoints = [
-    { id: 1, name: "Main Entrance", status: "Online", lastActivity: "2 min ago" },
-    { id: 2, name: "Server Room", status: "Online", lastActivity: "15 min ago" },
-    { id: 3, name: "Conference Room A", status: "Online", lastActivity: "5 min ago" },
-    { id: 4, name: "Conference Room B", status: "Offline", lastActivity: "2 hours ago" },
-    { id: 5, name: "2nd Floor Access", status: "Online", lastActivity: "1 min ago" },
-  ]
+    {
+      id: 1,
+      name: "Main Entrance",
+      status: "Online",
+      lastActivity: "2 min ago",
+    },
+    {
+      id: 2,
+      name: "Server Room",
+      status: "Online",
+      lastActivity: "15 min ago",
+    },
+    {
+      id: 3,
+      name: "Conference Room A",
+      status: "Online",
+      lastActivity: "5 min ago",
+    },
+    {
+      id: 4,
+      name: "Conference Room B",
+      status: "Offline",
+      lastActivity: "2 hours ago",
+    },
+    {
+      id: 5,
+      name: "2nd Floor Access",
+      status: "Online",
+      lastActivity: "1 min ago",
+    },
+  ];
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold">Access Control</h2>
-          <p className="text-sm sm:text-base text-gray-600">Manage access cards, permissions, and security logs</p>
+          <p className="text-sm sm:text-base text-gray-600">
+            Manage access cards, permissions, and security logs
+          </p>
         </div>
         <Dialog>
           <DialogTrigger asChild>
@@ -117,7 +166,9 @@ export function AccessControl() {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Issue New Access Card</DialogTitle>
-              <DialogDescription>Create a new access card for a member</DialogDescription>
+              <DialogDescription>
+                Create a new access card for a member
+              </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
               <div>
@@ -157,8 +208,17 @@ export function AccessControl() {
               <div>
                 <Label>Permissions</Label>
                 <div className="space-y-2 mt-2">
-                  {["Main Entrance", "1st Floor", "2nd Floor", "Conference Rooms", "Server Room"].map((permission) => (
-                    <div key={permission} className="flex items-center space-x-2">
+                  {[
+                    "Main Entrance",
+                    "1st Floor",
+                    "2nd Floor",
+                    "Conference Rooms",
+                    "Server Room",
+                  ].map((permission) => (
+                    <div
+                      key={permission}
+                      className="flex items-center space-x-2"
+                    >
                       <Switch id={permission} />
                       <Label htmlFor={permission}>{permission}</Label>
                     </div>
@@ -226,7 +286,9 @@ export function AccessControl() {
             <Shield className="h-5 w-5" />
             Access Points Status
           </CardTitle>
-          <CardDescription>Real-time status of all access control points</CardDescription>
+          <CardDescription>
+            Real-time status of all access control points
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
@@ -242,12 +304,18 @@ export function AccessControl() {
                     }`}
                   />
                   <div className="min-w-0 flex-1">
-                    <h4 className="font-medium text-sm truncate">{point.name}</h4>
-                    <p className="text-xs text-gray-600 truncate">Last: {point.lastActivity}</p>
+                    <h4 className="font-medium text-sm truncate">
+                      {point.name}
+                    </h4>
+                    <p className="text-xs text-gray-600 truncate">
+                      Last: {point.lastActivity}
+                    </p>
                   </div>
                 </div>
                 <Badge
-                  variant={point.status === "Online" ? "default" : "destructive"}
+                  variant={
+                    point.status === "Online" ? "default" : "destructive"
+                  }
                   className="text-xs flex-shrink-0"
                 >
                   {point.status}
@@ -265,7 +333,9 @@ export function AccessControl() {
             <Key className="h-5 w-5" />
             Access Cards
           </CardTitle>
-          <CardDescription>Manage member access cards and permissions</CardDescription>
+          <CardDescription>
+            Manage member access cards and permissions
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -304,23 +374,33 @@ export function AccessControl() {
                       <p className="text-sm text-gray-600 truncate">
                         Card ID: {card.cardId} • Role: {card.role}
                       </p>
-                      <p className="text-sm text-gray-600">Expires: {card.expires}</p>
+                      <p className="text-sm text-gray-600">
+                        Expires: {card.expires}
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-col sm:items-end gap-2">
                     <Badge
-                      variant={card.status === "Active" ? "default" : "destructive"}
+                      variant={
+                        card.status === "Active" ? "default" : "destructive"
+                      }
                       className="self-start sm:self-end text-xs"
                     >
                       {card.status}
                     </Badge>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="outline" className="flex-1 sm:flex-none bg-transparent">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 sm:flex-none bg-transparent"
+                      >
                         Edit
                       </Button>
                       <Button
                         size="sm"
-                        variant={card.status === "Active" ? "destructive" : "default"}
+                        variant={
+                          card.status === "Active" ? "destructive" : "default"
+                        }
                         className="flex-1 sm:flex-none"
                       >
                         {card.status === "Active" ? "Suspend" : "Activate"}
@@ -338,14 +418,23 @@ export function AccessControl() {
       <Card>
         <CardHeader>
           <CardTitle>Recent Access Logs</CardTitle>
-          <CardDescription>Latest access attempts and security events</CardDescription>
+          <CardDescription>
+            Latest access attempts and security events
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
             {accessLogs.map((log) => (
-              <div key={log.id} className="flex items-center justify-between p-3 border rounded-lg">
+              <div
+                key={log.id}
+                className="flex items-center justify-between p-3 border rounded-lg"
+              >
                 <div className="flex items-center space-x-4">
-                  <div className={`p-2 rounded-full ${log.status === "Granted" ? "bg-green-100" : "bg-red-100"}`}>
+                  <div
+                    className={`p-2 rounded-full ${
+                      log.status === "Granted" ? "bg-green-100" : "bg-red-100"
+                    }`}
+                  >
                     {log.status === "Granted" ? (
                       <CheckCircle className="h-4 w-4 text-green-600" />
                     ) : (
@@ -360,7 +449,13 @@ export function AccessControl() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <Badge variant={log.status === "Granted" ? "default" : "destructive"}>{log.status}</Badge>
+                  <Badge
+                    variant={
+                      log.status === "Granted" ? "default" : "destructive"
+                    }
+                  >
+                    {log.status}
+                  </Badge>
                   <p className="text-sm text-gray-600 mt-1">{log.timestamp}</p>
                 </div>
               </div>
@@ -369,5 +464,5 @@ export function AccessControl() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
