@@ -46,7 +46,7 @@ export function WorkspaceBooking() {
       price: 25,
       status: "occupied",
       floor: "1st Floor",
-      occupant: "John Doe",
+      occupant: "Tshering Dorji",
     },
     {
       id: 3,
@@ -63,7 +63,7 @@ export function WorkspaceBooking() {
       price: 80,
       status: "reserved",
       floor: "2nd Floor",
-      occupant: "Sarah Wilson",
+      occupant: "Pema Tshering",
     },
     {
       id: 5,
@@ -80,7 +80,7 @@ export function WorkspaceBooking() {
       price: 45,
       status: "occupied",
       floor: "1st Floor",
-      occupant: "Mike Chen",
+      occupant: "Tshering Dorji",
     },
   ];
 
